@@ -16,4 +16,8 @@ FROM f0ide/devcontainer-dfinity
 # RUN su node -c "npm install -g <your-package-list-here>"
 
 # [Optional] Uncomment if you want to use Rust
-# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -t wasm32-unknown-unknown -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -t wasm32-unknown-unknown -y
+
+RUN git clone git@github.com:chenyan2002/ic-repl.git | cd ic-repl | cargo build | cargo install --path .
+
+RUN dfx create app
